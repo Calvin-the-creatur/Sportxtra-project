@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login System</title>
+</head>
+<body>
+    <form id="authForm">
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <button type="button" onclick="signup()">Sign Up</button>
+        <button type="button" onclick="signin()">Sign In</button>
+    </form>
+    <p id="message"></p>
+    <script>
+        const webAppUrl = "https://script.google.com/macros/s/AKfycbwOX_qDUwysUt0wmrusSMrVgADiyc0KT-cA4CeEV0tUeFGSik3wQGqN_vM6jHkbR9vC/exec"
+        function signup() {
+            var name = document.getElementById("nameInput").value;
+            fetch(webAppUrl + "?action=signup&name=" + encodeURIComponent(name))
+                .then(response => response.text())
+                .then(data => document.getElementById("message").textContent = data);
+        }
+        function signin() {
+            var name = document.getElementById("nameInput").value;
+            fetch(webAppUrl + "?action=signin&name=" + encodeURIComponent(name))
+                .then(response => response.text())
+                .then(data => document.getElementById("message").textContent = data);
+        }
+    </script>
+</body>
+</html>
